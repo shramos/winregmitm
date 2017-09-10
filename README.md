@@ -16,7 +16,7 @@ That's all! You are ready to rock!
 
 # Examples
 
-###### Without parameters
+## Without parameters
 
 With the command:
 
@@ -24,7 +24,7 @@ With the command:
 
 the tool will enter in monitoring mode, it will record all the client movements in the server Windows Registry. It may be useful to select when to insert a particular value or extract the name of a key to use with the option ```--key```.
 
-###### SetValue operation
+## SetValue operation
 
 The ```--value``` or ```-val``` option is used to intercept all **setvalue** packets that flow from the client to the server, these types of packages are used to establish a value in a certain key of the windows registry of the remote machine. The use of this option is very simple:
 
@@ -32,7 +32,7 @@ The ```--value``` or ```-val``` option is used to intercept all **setvalue** pac
 
 This statement will replace the original value that the **setvalue** packet contains by the value *attackervalue*.
 
-###### OpenKey operation
+## OpenKey operation
 
 The ```--key``` or ```-k``` option is used to intercept all **openkey** packets that flow from the client to the server, these type of packets are used to open a certain key of the windows registry of the remote machine. It is used as follows:
 
@@ -44,7 +44,7 @@ You can also combine both options as follows:
 
 ```python winregmitm.py --key "S-1-5-21-3397293157-906935177-3907816343-1000\Keyboard Layout" --value "attackervalue"```
 
-###### CreateKey operation
+## CreateKey operation
 
 The ```--newkey``` or ```-nk``` option is used to intercept all **CreateKey** packets that flow from the client to the server, these type of packets are used to change the name a certain key that is been created on the windows registry of the remote machine. It is used as follows:
 
@@ -54,7 +54,7 @@ You can also force the key to be created in another path of the remote machine's
 
 ```python winregmitm.py --newkeypath "S-1-5-21-3397293157-906935177-3907816343-1000\Keyboard Layout" --newkey "newattackername"```
 
-###### Forcing a session that is supposed to be encrypted to go without encrypting
+## Forcing a session that is supposed to be encrypted to go without encrypting
 
 If the user of the client and the server machines that communicate via the Windows Remote Registry Protocol have the same user and password, the authentication will be performed automatically, and in addition, the payload of the *winreg* packages will be encrypted. To prevent this from happening, we can force the authentication of a session that is supposed to be encrypted to go unencrypting. To do this, we use the following command:
 
