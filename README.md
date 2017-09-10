@@ -12,6 +12,56 @@ After that, we need to install all python requirements:
 
 ```pip install -r requirements.txt```
 
-
+That's all! You are ready to rock!
 
 # Examples
+
+###### Without parameters
+
+With the command:
+
+```python winregmitm.py```
+
+the tool will enter in monitoring mode, it will record all the client movements in the server Windows Registry. It may be useful to select when to insert a particular value or extract the name of a key to use with the option ```--key```.
+
+###### SetValue operation
+
+The ```--value``` or ```-val``` option is used to intercept all **setvalue** packets that flow from the client to the server, these types of packages are used to establish a value in a certain key of the windows registry of the remote machine. The use of this option is very simple:
+
+```python winregmitm.py --value attackervalue```
+
+This statement will replace the original value that the **setvalue** packet contains by the value *attackervalue*.
+
+###### OpenKey operation
+
+The ```--key``` or ```-k``` option is used to intercept all **openkey** packets that flow from the client to the server, these type of packets are used to open a certain key of the windows registry of the remote machine. It is used as follows:
+
+```python winregmitm.py --key "S-1-5-21-3397293157-906935177-3907816343-1000\Keyboard Layout"```
+
+This statement will replace the original key that the **openkey** packet contains by the key *S-1-5-21-3397293157-906935177-3907816343-1000\Keyboard Layout*. In such a way that when the user thinks that he is opening a certain key, he is opening the key provided by the attacker.
+
+You can also combine both options as follows:
+
+```python winregmitm.py --key "S-1-5-21-3397293157-906935177-3907816343-1000\Keyboard Layout" --value "attackervalue"```
+
+###### CreateKey operation
+
+The ```--newkey``` or ```-nk``` option is used to intercept all **CreateKey** packets that flow from the client to the server, these type of packets are used to change the name a certain key that is been created on the windows registry of the remote machine. It is used as follows:
+
+```python winregmitm.py --newkey "newattackername"```
+
+You can also force the key to be created in another path of the remote machine's registry by using the following command:
+
+```python winregmitm.py --newkeypath "S-1-5-21-3397293157-906935177-3907816343-1000\Keyboard Layout" --newkey "newattackername"```
+
+###### Forcing a session that is supposed to be encrypted to go without encrypting
+
+If the user of the client and the server machines that communicate via the Windows Remote Registry Protocol have the same user and password, the authentication will be performed automatically, and in addition, the payload of the *winreg* packages will be encrypted. To prevent this from happening, we can force the authentication of a session that is supposed to be encrypted to go unencrypting. To do this, we use the following command:
+
+```python winregmitm.py --encrypted```
+
+This command will force at the time of authentication that the session goes unencrypted. If the session has already started, we can use this option in combination with ```--break-connection``` or  ```-bk```, to break the current connection and force the user to re-authenticate.
+
+```python winregmitm.py --break-connection --encrypted```
+
+This will break the currently established connection between the client and the server and the next time it is authenticated, it will force it to go unencrypted.
