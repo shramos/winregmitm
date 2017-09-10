@@ -16,6 +16,14 @@ That's all! You are ready to rock!
 
 # Examples
 
+## Video Examples
+
+###### Setting a test enviroment for winregMITM tool in Windows 10
+https://www.youtube.com/watch?v=fzkeEJG7l4Q
+
+###### Breaking and forcing a Windows Remote Registry Protocol session to go unencrypted in Windows 10
+https://www.youtube.com/watch?v=gZ37Pkp9ic4
+
 ## Without parameters
 
 With the command:
@@ -65,14 +73,6 @@ This command will force at the time of authentication that the session goes unen
 ```python winregmitm.py --break-connection --encrypted```
 
 This will break the currently established connection between the client and the server and the next time it is authenticated, it will force it to go unencrypted.
-
-# Video Examples
-
-###### Setting a test enviroment for winregMITM tool in Windows 10
-https://www.youtube.com/watch?v=fzkeEJG7l4Q
-
-###### Breaking and forcing a Windows Remote Registry Protocol session to go unencrypted in Windows 10
-https://www.youtube.com/watch?v=gZ37Pkp9ic4
 
 # Contact
 shramos@protonmail.com
