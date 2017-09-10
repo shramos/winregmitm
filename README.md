@@ -65,3 +65,6 @@ This command will force at the time of authentication that the session goes unen
 ```python winregmitm.py --break-connection --encrypted```
 
 This will break the currently established connection between the client and the server and the next time it is authenticated, it will force it to go unencrypted.
+
+# Contact
+shramos@protonmail.com
