@@ -54,7 +54,7 @@ You can also force the key to be created in another path of the remote machine's
 
 ```python winregmitm.py --newkeypath "S-1-5-21-3397293157-906935177-3907816343-1000\Keyboard Layout" --newkey "newattackername"```
 
-## Forcing a session that is supposed to be encrypted to go without encrypting
+## Forcing a session that is supposed to be encrypted to go unencrypted
 
 If the user of the client and the server machines that communicate via the Windows Remote Registry Protocol have the same user and password, the authentication will be performed automatically, and in addition, the payload of the *winreg* packages will be encrypted. To prevent this from happening, we can force the authentication of a session that is supposed to be encrypted to go unencrypting. To do this, we use the following command:
 
@@ -65,6 +65,14 @@ This command will force at the time of authentication that the session goes unen
 ```python winregmitm.py --break-connection --encrypted```
 
 This will break the currently established connection between the client and the server and the next time it is authenticated, it will force it to go unencrypted.
+
+# Video Examples
+
+###### Setting a test enviroment for winregMITM tool in Windows 10
+https://www.youtube.com/watch?v=fzkeEJG7l4Q
+
+###### Breaking and forcing a Windows Remote Registry Protocol session to go unencrypted in Windows 10
+https://www.youtube.com/watch?v=gZ37Pkp9ic4
 
 # Contact
 shramos@protonmail.com
